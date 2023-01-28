@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
+import Statistics from "../Statistics/Statistics";
 
 class Feedback extends Component {
 
@@ -19,12 +20,18 @@ class Feedback extends Component {
     onLeaveFeedback = e => {
         const optional = e.target.name;
         this.setState(prevState => {
-            return {
-                [optional]: prevState[optional] + 1,
-        }
-        }  
-    )};
+            return {[optional]: prevState[optional] + 1 }})
+    };
 
+    countTotalFeedback = () => {
+        const { good, neutral, bad} = this.state;
+        const totalFeedback = good + neutral + bad;
+        return totalFeedback;
+    }
+
+    countPositiveFeedbackPercentage = () => {
+
+    }
 
     render() {
         const { good, neutral, bad } = this.state;
@@ -37,15 +44,14 @@ class Feedback extends Component {
             onLeaveFeedback={this.onLeaveFeedback}
           />
                 
-  <h2 class="statistics-title">Statistics</h2>
-
-  <div class="statistics-text-wrap">
-    <p class="statistics__text">Good: {good}</p>
-    <p class="statistics__text">Neutral: {neutral}</p>
-    <p class="statistics__text">Bad: {bad}</p>
-    <p class="statistics__text">Total: </p>
-    <p class="statistics__text">Positive Feedback: </p>
-  </div>
+    <h2 class="statistics-title">Statistics</h2>
+        <Statistics
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        total={this.countTotalFeedback()}
+        positivePercentage={this.countPositiveFeedbackPercentage()}
+                />
  
 </div>
         )
