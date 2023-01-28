@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Sections from "../Sections/Sections";
 import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
 import Statistics from "../Statistics/Statistics";
+import Notification from "../Notification/Notification";
 
 class Feedback extends Component {
 
@@ -30,29 +32,38 @@ class Feedback extends Component {
     }
 
     countPositiveFeedbackPercentage = () => {
-
+        const { good, neutral, bad } = this.state;
+        this.positivePercentage = Math.round((good / (good + neutral + bad)) * 100);
+        if (this.positivePercentage) {
+            return this.positivePercentage;
+        } else {
+            return 0;   
+ }
     }
 
     render() {
         const { good, neutral, bad } = this.state;
 
         return (
-            <div class="container">
-  <h2 class="feedback-title">Please leave feedback</h2>
+    <div class="container">    
+    <Sections title="Please leave feedback">
         <FeedbackOptions
             options={Object.keys(this.state)}
             onLeaveFeedback={this.onLeaveFeedback}
-          />
-                
-    <h2 class="statistics-title">Statistics</h2>
+        />
+    </Sections> 
+
+    <Sections title="Statistics">
+        {{good, neutral, bad} > 1 ?            
         <Statistics
         good={good}
         neutral={neutral}
         bad={bad}
         total={this.countTotalFeedback()}
         positivePercentage={this.countPositiveFeedbackPercentage()}
-                />
- 
+        /> : <Notification message="There is no feedback"></Notification>}
+     </Sections>
+               
 </div>
         )
     }
