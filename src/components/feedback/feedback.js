@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Sections from "../Sections/Sections";
-import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
-import Statistics from "../Statistics/Statistics";
-import Notification from "../Notification/Notification";
+import Sections from "../Sections";
+import FeedbackOptions from '../FeedbackOptions';
+import Statistics from "../Statistics";
+import Notification from "../Notification";
 
 class Feedback extends Component {
 

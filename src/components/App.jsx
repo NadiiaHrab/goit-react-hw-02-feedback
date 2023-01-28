@@ -1,5 +1,5 @@
-import Container from "./Container/Container";
-import Feedback from "./feedback/feedback";
+import Container from "./Container";
+import Feedback from "./feedback";
 
 
 export const App = () => {
