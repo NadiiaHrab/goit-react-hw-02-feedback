@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-
+import css from "./Statistics.module.css";
 function Statistics({ good, neutral, bad, total, positivePercentage }) {
     return (
-        <div class="statistics-text-wrap">
-    <p class="statistics__text">Good: {good}</p>
-    <p class="statistics__text">Neutral: {neutral}</p>
-    <p class="statistics__text">Bad: {bad}</p>
-    <p class="statistics__text">Total: {total}</p>
-    <p class="statistics__text">Positive Feedback:{positivePercentage}%</p>
+        <div className={css.statisticsWrap}>
+    <p className={css.text}>Good: {good}</p>
+    <p className={css.text}>Neutral: {neutral}</p>
+    <p className={css.text}>Bad: {bad}</p>
+    <p className={css.text}>Total: {total}</p>
+    <p className={css.text}>Positive Feedback: {positivePercentage}%</p>
   </div>
     )
 }

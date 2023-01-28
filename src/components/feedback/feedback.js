@@ -42,10 +42,10 @@ class Feedback extends Component {
     }
 
     render() {
-        const { good, neutral, bad } = this.state;
+    const { good, neutral, bad } = this.state;
 
         return (
-    <div class="container">    
+        <>
     <Sections title="Please leave feedback">
         <FeedbackOptions
             options={Object.keys(this.state)}
@@ -54,17 +54,16 @@ class Feedback extends Component {
     </Sections> 
 
     <Sections title="Statistics">
-        {{good, neutral, bad} > 1 ?            
-        <Statistics
+    {this.state.good >= 1 ?
+    <Statistics
         good={good}
         neutral={neutral}
         bad={bad}
         total={this.countTotalFeedback()}
         positivePercentage={this.countPositiveFeedbackPercentage()}
-        /> : <Notification message="There is no feedback"></Notification>}
-     </Sections>
-               
-</div>
+        /> : <Notification message="There is no feedback"></Notification>}             
+                </Sections>
+    </>
         )
     }
 }

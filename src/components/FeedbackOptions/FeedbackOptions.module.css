@@ -1,0 +1,25 @@
+.btn {
+display: inline-block;
+width: 90px;
+height: 40px;
+background-color: white;
+border-radius: 10px;
+border: 1px solid orange;
+cursor: pointer;
+color: cadetblue;;
+font-size: 18px;
+transition-property: color, background-color;
+transition-duration: 250ms;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.btn:hover,
+.btn:hover {
+    background-color: rgb(212, 242, 243);
+    color: rgb(50, 44, 32);
+}
+
+.btn:not(:last-child) {
+    margin-right: 5px;
+}
