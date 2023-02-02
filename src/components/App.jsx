@@ -1,5 +1,5 @@
 import Container from "./Container";
-import Feedback from "./Feedback";
+import Feedback from "./FeedbackCopmonent";
 
 
 export const App = () => {
