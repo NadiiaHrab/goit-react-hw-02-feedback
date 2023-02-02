@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Sections from "../Sections";
 import FeedbackOptions from '../FeedbackOptions';
 import Statistics from "../Statistics";
+import Notification from "../Notification";
 
 
 class Feedback extends Component {
@@ -42,7 +43,8 @@ class Feedback extends Component {
     }
 
     render() {
-    const { good, neutral, bad } = this.state;
+        const { good, neutral, bad } = this.state;
+        // const totalFeedback = this.countTotalFeedback();
 
         return (
         <>
@@ -54,13 +56,15 @@ class Feedback extends Component {
     </Sections> 
 
     <Sections title="Statistics">
-    <Statistics
+        {this.countTotalFeedback() ? 
+                      <Statistics
         good={good}
         neutral={neutral}
         bad={bad}
         total={this.countTotalFeedback()}
         positivePercentage={this.countPositiveFeedbackPercentage()}
-        />            
+        /> : <Notification message="There is no feedback"></Notification>}
+             
     </Sections>
     </>
         )
